@@ -1,0 +1,92 @@
+<html><head>
+  <script src="nutrition.json"></script>
+  <title>Nutrient Tracker</title>
+    <style>
+      body { 
+	text-align: center;
+	font-size: 30px;
+	 }
+      #final {
+	left: 75%;
+	top: 10px;
+	background-color: yellow;
+	color: black;
+      }
+
+      button {
+	color: blanchedalmond;
+	background-color: chocolate;
+	border-color: chocolate;
+	position:absolute;
+	width: 200px;
+	height: 40px;
+	font-size: 16px;
+	border-radius: 8px;
+      }
+      button:hover {
+	color: black;
+	background-color: yellow;
+      }
+      body {
+	background-color: SandyBrown;
+      }
+</style><script>
+  var cal = 0;
+  var pro = 0;
+  var car = 0;
+  var fat = 0;
+  var vita = 0;
+  var vitb = 0;
+  var vitc = 0;
+  var vitd = 0;
+  var calc = 0;
+  var pota = 0;
+  var iron = 0;
+
+
+  function boot() {
+    var n = Object.keys(data).length
+    for (let i = 0; i < n; i++) {
+      let btn = document.createElement("button");
+      btn.innerHTML = data[i].name;
+      btn.onclick = function() {
+	cal = data[i].cal + cal;
+	pro = data[i].pro  + pro ;
+	car = data[i].car  + car ;
+	fat = data[i].fat  + fat ;
+	vita = data[i].vita  + vita ;
+	vitb = data[i].vitb  + vitb ;
+	vitc = data[i].vitc  + vitc ;
+	vitd = data[i].vitd  + vitd ;
+	calc = data[i].calc  + calc ;
+	pota = data[i].pota  + pota ;
+	iron = data[i].iron  + iron ;
+      }
+      btn.style.left = 15 + ( i % 3)*30+"%";
+      btn.style.top = 10 + 10 * (i-(i%3))/3 + "%";
+	btn.setAttribute("cal", data[i].cal);
+	btn.setAttribute("pro", data[i].pro);
+	btn.setAttribute("car", data[i].car);
+	btn.setAttribute("fat", data[i].fat);
+	btn.setAttribute("vita", data[i].vita);
+	btn.setAttribute("vitb", data[i].vitb);
+	btn.setAttribute("vitc", data[i].vitc);
+	btn.setAttribute("vitd", data[i].vitd);
+	btn.setAttribute("calc", data[i].calc);
+	btn.setAttribute("pota", data[i].pota);
+	btn.setAttribute("iron", data[i].iron);
+      document.body.appendChild(btn);
+    }
+  }
+  function finish() {
+    document.body.innerHTML = "Calories: "+cal+"/2000<br />Protein: "+pro+"/50<br />Carbs: "+car+"/250<br />Fat: "+fat+"/78<br />Vitamin A: "+vita+"%/100%<br />Vitamin B: "+vitb+"%/100%<br />Vitamin C: "+vitc+"%/100%<br />Vitamin D: "+vitd+"%/100%<br />Calcium: "+calc+"%/100%<br />Potassium: "+pota+"%/100%<br />Iron: "+iron + "%/100%";
+  }
+  
+</script>
+</head>
+  <body onload="boot()">
+    <h1>Nutrient Tracker</h1>
+    <button onclick="finish()" id="final">Finalize Selection</button>
+
+  </body>
+</html>
